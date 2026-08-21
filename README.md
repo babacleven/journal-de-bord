@@ -16,17 +16,50 @@ _Un serveur Express qui note tout ce qui lui arrive - sans jamais s'arrêter de 
 
 Plutôt que de polluer la console avec des `console.log`, chaque requête HTTP est **écrite sur disque de façon asynchrone** grâce aux promesses du module natif `node:fs/promises` : le serveur continue de répondre pendant que l'écriture se fait.
 
-## Démarrage rapide
+## Installation et démarrage (de zéro)
+
+### Étape 1 — Installer Node.js
+
+Si Node.js n'est pas encore installé sur ta machine :
+
+1. Rends-toi sur **[nodejs.org](https://nodejs.org/fr)** et télécharge la version **LTS** (recommandée).
+2. Lance l'installateur et suis les étapes (laisse les options par défaut).
+3. Vérifie que tout est bien en place en ouvrant un terminal :
 
 ```bash
-# 1. Récupérer les dépendances
-npm install
+node -v    # affiche la version de Node.js (ex: v20.x.x)
+npm -v     # affiche la version de npm (installé avec Node.js)
+```
 
-# 2. Allumer le serveur
+> Si les deux commandes renvoient un numéro de version, c'est bon. Sinon, redémarre ton terminal (ou ton PC) pour que le PATH se mette à jour.
+
+### Étape 2 — Récupérer le projet
+
+```bash
+# Clone le dépôt puis place-toi dedans
+git clone https://github.com/babacleven/journal-de-bord.git
+cd journal-de-bord
+```
+
+*(Ou télécharge le ZIP depuis GitHub et extrais-le si tu n'utilises pas git.)*
+
+### Étape 3 — Installer les dépendances
+
+```bash
+npm install
+```
+
+Cette commande crée le dossier `node_modules` avec Express, le seul paquet nécessaire au projet.
+
+### Étape 4 — Allumer le serveur
+
+```bash
 npm start          # ou : npm run dev (redémarrage auto à chaque modification)
 ```
 
-Le serveur répond sur `http://localhost:3000`.
+Le serveur répond sur `http://localhost:3000` — ouvre cette adresse dans ton navigateur, puis teste `/etat` et `/a-propos`.
+
+Pour arrêter le serveur : `Ctrl + C` dans le terminal.
 
 ## Ce que contient le projet
 
@@ -73,6 +106,26 @@ journal-de-bord/
 - **Module `node:fs/promises`** avec `appendFile`
 - **Gestion des chemins** portable avec `node:path`
 - **Robustesse** : une erreur d'écriture ne casse jamais le serveur
+
+## Contexte : issu d'une formation vidéo
+
+Ce projet est né d'une **formation vidéo Node.js**. Il met en pratique les notions abordées au fil des chapitres :
+
+| Chapitre de la formation | Utilisé ici ? | Où le voir |
+|---|---|---|
+| Installation et environnement Node.js | Oui | Prérequis pour lancer le projet |
+| `package.json` et scripts NPM | Oui | Scripts `start` et `dev` |
+| Modules CommonJS vs modules ES | Oui | Syntaxe `import` / `export` (ESM) partout |
+| Serveur HTTP natif (`node:http`) | Remplacé | Express fait le même travail dans `src/app.js` |
+| Variables d'environnement | Oui | `process.env.PORT` dans `server.js` (port personnalisable sans toucher au code) |
+| Routage simple | Oui | Routes `/`, `/etat`, `/a-propos` |
+| Construction d'une API JSON | Oui | Réponses envoyées avec `res.json()` |
+| Middleware | Oui — cœur du projet | `src/middlewares/journal.js` branché via `app.use()` |
+| Module `fs` (système de fichiers) | Oui | `appendFile` via `node:fs/promises` |
+| Module `path` | Oui | Construction du chemin de `journal.txt` |
+| Événements (EventEmitter) | Oui | `res.on("finish", ...)` : la réponse est un émetteur d'événements |
+| Objet `process` | Oui | `process.cwd()`, `process.env`, `process.exit()` implicite à l'arrêt |
+| Modules `os`, `url`, `crypto` | Non utilisés ici | Hors scope de cet exercice |
 
 ## Auteur
 
