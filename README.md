@@ -18,7 +18,7 @@ Plutôt que de polluer la console avec des `console.log`, chaque requête HTTP e
 
 ## Installation et démarrage (de zéro)
 
-### Étape 1 — Installer Node.js
+### Étape 1 - Installer Node.js
 
 Si Node.js n'est pas encore installé sur ta machine :
 
@@ -33,7 +33,7 @@ npm -v     # affiche la version de npm (installé avec Node.js)
 
 > Si les deux commandes renvoient un numéro de version, c'est bon. Sinon, redémarre ton terminal (ou ton PC) pour que le PATH se mette à jour.
 
-### Étape 2 — Récupérer le projet
+### Étape 2 - Récupérer le projet
 
 ```bash
 # Clone le dépôt puis place-toi dedans
@@ -41,9 +41,9 @@ git clone https://github.com/babacleven/journal-de-bord.git
 cd journal-de-bord
 ```
 
-*(Ou télécharge le ZIP depuis GitHub et extrais-le si tu n'utilises pas git.)*
+_(Ou télécharge le ZIP depuis GitHub et extrais-le si tu n'utilises pas git.)_
 
-### Étape 3 — Installer les dépendances
+### Étape 3 - Installer les dépendances
 
 ```bash
 npm install
@@ -51,13 +51,13 @@ npm install
 
 Cette commande crée le dossier `node_modules` avec Express, le seul paquet nécessaire au projet.
 
-### Étape 4 — Allumer le serveur
+### Étape 4 - Allumer le serveur
 
 ```bash
 npm start          # ou : npm run dev (redémarrage auto à chaque modification)
 ```
 
-Le serveur répond sur `http://localhost:3000` — ouvre cette adresse dans ton navigateur, puis teste `/etat` et `/a-propos`.
+Le serveur répond sur `http://localhost:3000` - ouvre cette adresse dans ton navigateur, puis teste `/etat` et `/a-propos`.
 
 Pour arrêter le serveur : `Ctrl + C` dans le terminal.
 
@@ -111,21 +111,21 @@ journal-de-bord/
 
 Ce projet est né d'une **formation vidéo Node.js**. Il met en pratique les notions abordées au fil des chapitres :
 
-| Chapitre de la formation | Utilisé ici ? | Où le voir |
-|---|---|---|
-| Installation et environnement Node.js | Oui | Prérequis pour lancer le projet |
-| `package.json` et scripts NPM | Oui | Scripts `start` et `dev` |
-| Modules CommonJS vs modules ES | Oui | Syntaxe `import` / `export` (ESM) partout |
-| Serveur HTTP natif (`node:http`) | Remplacé | Express fait le même travail dans `src/app.js` |
-| Variables d'environnement | Oui | `process.env.PORT` dans `server.js` (port personnalisable sans toucher au code) |
-| Routage simple | Oui | Routes `/`, `/etat`, `/a-propos` |
-| Construction d'une API JSON | Oui | Réponses envoyées avec `res.json()` |
-| Middleware | Oui — cœur du projet | `src/middlewares/journal.js` branché via `app.use()` |
-| Module `fs` (système de fichiers) | Oui | `appendFile` via `node:fs/promises` |
-| Module `path` | Oui | Construction du chemin de `journal.txt` |
-| Événements (EventEmitter) | Oui | `res.on("finish", ...)` : la réponse est un émetteur d'événements |
-| Objet `process` | Oui | `process.cwd()`, `process.env`, `process.exit()` implicite à l'arrêt |
-| Modules `os`, `url`, `crypto` | Non utilisés ici | Hors scope de cet exercice |
+| Chapitre de la formation              | Utilisé ici ?        | Où le voir                                                                      |
+| ------------------------------------- | -------------------- | ------------------------------------------------------------------------------- |
+| Installation et environnement Node.js | Oui                  | Prérequis pour lancer le projet                                                 |
+| `package.json` et scripts NPM         | Oui                  | Scripts `start` et `dev`                                                        |
+| Modules CommonJS vs modules ES        | Oui                  | Syntaxe `import` / `export` (ESM) partout                                       |
+| Serveur HTTP natif (`node:http`)      | Remplacé             | Express fait le même travail dans `src/app.js`                                  |
+| Variables d'environnement             | Oui                  | `process.env.PORT` dans `server.js` (port personnalisable sans toucher au code) |
+| Routage simple                        | Oui                  | Routes `/`, `/etat`, `/a-propos`                                                |
+| Construction d'une API JSON           | Oui                  | Réponses envoyées avec `res.json()`                                             |
+| Middleware                            | Oui - cœur du projet | `src/middlewares/journal.js` branché via `app.use()`                            |
+| Module `fs` (système de fichiers)     | Oui                  | `appendFile` via `node:fs/promises`                                             |
+| Module `path`                         | Oui                  | Construction du chemin de `journal.txt`                                         |
+| Événements (EventEmitter)             | Oui                  | `res.on("finish", ...)` : la réponse est un émetteur d'événements               |
+| Objet `process`                       | Oui                  | `process.cwd()`, `process.env`, `process.exit()` implicite à l'arrêt            |
+| Modules `os`, `url`, `crypto`         | Non utilisés ici     | Hors scope de cet exercice                                                      |
 
 ## Auteur
 
