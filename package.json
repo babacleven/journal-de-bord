@@ -1,0 +1,23 @@
+{
+  "name": "journal-de-bord",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Serveur Express qui trace chaque requete HTTP dans un fichier, de facon asynchrone (fs/promises)",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "express",
+    "middleware",
+    "logging",
+    "async",
+    "nodejs"
+  ],
+  "author": "BABA Aristote (https://github.com/babacleven)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
