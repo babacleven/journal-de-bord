@@ -2,7 +2,7 @@
 
 # Journal de Bord
 
-*Un serveur Express qui note tout ce qui lui arrive — sans jamais s'arrêter de respirer.*
+_Un serveur Express qui note tout ce qui lui arrive - sans jamais s'arrêter de respirer._
 
 ![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-5-black?style=for-the-badge&logo=express&logoColor=white)
@@ -48,14 +48,14 @@ journal-de-bord/
 2. Le middleware note l'heure de départ et se branche sur l'événement `finish` de la réponse.
 3. Il appelle `next()` immédiatement : la route peut répondre sans attendre.
 4. Quand la réponse est partie, on construit la ligne de log (date, méthode, URL, statut, durée).
-5. `appendFile()` écrit la ligne dans `journal.txt` via une promesse — si ça échoue, l'erreur est affichée mais **le serveur ne plante pas**.
+5. `appendFile()` écrit la ligne dans `journal.txt` via une promesse - si ça échoue, l'erreur est affichée mais **le serveur ne plante pas**.
 
 ## Les routes
 
-| Route | Ce qu'elle fait |
-|---|---|
-| `GET /` | Message de bienvenue. |
-| `GET /etat` | Sonde de vie — renvoie `{"etat": "operationnel"}`. |
+| Route           | Ce qu'elle fait                                         |
+| --------------- | ------------------------------------------------------- |
+| `GET /`         | Message de bienvenue.                                   |
+| `GET /etat`     | Sonde de vie - renvoie `{"etat": "operationnel"}`.      |
 | `GET /a-propos` | Rappel du nom du projet et de son objectif pédagogique. |
 
 ## Exemple de journal produit
@@ -79,4 +79,4 @@ journal-de-bord/
 **BABA Aristote**
 [GitHub @babacleven](https://github.com/babacleven)
 
-*Projet réalisé dans le cadre de la Semaine 11 — Akieni Academy.*
+_Projet réalisé dans le cadre de la Semaine 11 - Akieni Academy._
